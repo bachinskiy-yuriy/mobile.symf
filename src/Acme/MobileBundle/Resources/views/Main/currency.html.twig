@@ -1,0 +1,17 @@
+            {% block currency %}
+            <div class="currency">
+                <div class="moduletable">
+                    <h3>Валюта:</h3>
+                    <form id="select-form" class="xxx" action="http://livedemo00.template-help.com/free_2013_virtuemart_2_0_22_a/" method="post">
+                        <select id="virtuemart_currency_id" name="virtuemart_currency_id" class="inputbox">
+                            <option value="47">Євро &euro;</option>
+                            <option value="144" selected="selected">Доллар $</option>
+                            <option value="200">Гривні &#8372;</option>
+                        </select>
+                        <input class="button" type="submit" name="submit" value="Змінити" />
+                    </form>
+                    <script src="{{ asset('/js/jqtransform.js') }}" type="text/javascript"></script>
+                    <script src="{{ asset('/js/mylib3.js') }}" type="text/javascript"></script>
+                </div>
+            </div>
+            {% endblock %}

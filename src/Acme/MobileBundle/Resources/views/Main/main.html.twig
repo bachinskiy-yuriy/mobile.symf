@@ -1,11 +1,11 @@
 {% extends 'AcmeMobileBundle:Main:base.html.twig' %}
     {% block content %}
                     <div class="moduletable_slider">
-                        <script src="/js/mylib6.js" type="text/javascript"></script>
+                        <script src="{{ asset('/js/mylib6.js') }}" type="text/javascript"></script>
                         <div class="slideshowck_slider camera_wrap camera_amber_skin" id="camera_wrap_130" style="width:742px;">
-                            <div data-thumb="/images/slider/slide1_th.jpg" data-src="/images/slider/slide1.jpg" data-link="index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id=6" data-target="_parent" ></div>
-                            <div data-thumb="/images/slider/slide2_th.jpg" data-src="/images/slider/slide2.jpg" data-link="index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id=3" data-target="_parent" ></div>
-                            <div data-thumb="/images/slider/slide3_th.jpg" data-src="/images/slider/slide3.jpg" data-link="index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id=1" data-target="_parent" ></div>
+                            <div data-thumb="/images/slider/slide1_th.jpg') }}" data-src="{{ asset('/images/slider/slide1.jpg') }}" data-link="index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id=6" data-target="_parent" ></div>
+                            <div data-thumb="/images/slider/slide2_th.jpg') }}" data-src="{{ asset('/images/slider/slide2.jpg') }}" data-link="index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id=3" data-target="_parent" ></div>
+                            <div data-thumb="/images/slider/slide3_th.jpg') }}" data-src="{{ asset('/images/slider/slide3.jpg') }}" data-link="index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id=1" data-target="_parent" ></div>
                         </div>
                         <div style="clear:both;"></div>
                     </div>
@@ -22,7 +22,7 @@
                                             <div class="product-box spacer">
                                                 <div class="browseImage">
                                                     <div class="new"></div>
-                                                    <a href="index.php?car1" class="img2"><img src="/images/products/product18_resized.png" alt="product18" class="browseProductImage featuredProductImage" border="0" /></a>
+                                                    <a href="index.php?car1" class="img2"><img src="{{ asset('/images/products/product18_resized.png') }}" alt="product18" class="browseProductImage featuredProductImage" border="0" /></a>
                                                 </div>
                                                 <div class="fleft">
                                                     <div class="Title">
@@ -39,7 +39,7 @@
                                                         <form method="post" class="product js-recalculate" action="index.php" id="addtocartproduct18">
                                                             <input name="quantity" type="hidden" value="1" />
                                                             <div class="addtocart-bar2">
-                                                                <script src="/mylib7.js" type="text/javascript"></script>
+                                                                <script src="{{ asset('/mylib7.js') }}" type="text/javascript"></script>
                                                                 <div class="not_notyfi">
                                                                     <span class="quantity-box">
                                                                         <input type="text" class="quantity-input js-recalculate" name="quantity[]"  value="1"/>
@@ -70,7 +70,7 @@
                                             <div class="product-box spacer">
                                                 <div class="browseImage">
                                                     <div class="new"></div>
-                                                    <a href="index.php?car1" class="img2"><img src="/images/products/product24_resized.png" alt="product24" class="browseProductImage featuredProductImage" border="0" /></a>
+                                                    <a href="index.php?car1" class="img2"><img src="{{ asset('/images/products/product24_resized.png') }}" alt="product24" class="browseProductImage featuredProductImage" border="0" /></a>
                                                 </div>
                                                 <div class="fleft">
                                                     <div class="Title">
@@ -83,7 +83,7 @@
                                                         <form method="post" class="product js-recalculate" action="index.php" id="addtocartproduct24">
                                                             <input name="quantity" type="hidden" value="1" />
                                                             <div class="addtocart-bar2">
-                                                                <script src="/mylib7.js" type="text/javascript"></script>
+                                                                <script src="{{ asset('/mylib7.js') }}" type="text/javascript"></script>
                                                                 <div class="not_notyfi">
                                                                     <span class="quantity-box"><input type="text" class="quantity-input js-recalculate" name="quantity[]"  value="1"/></span>
                                                                     <span class="quantity-controls">
@@ -112,7 +112,7 @@
                                             <div class="product-box spacer">
                                                 <div class="browseImage">
                                                     <div class="new"></div>
-                                                    <a href="index.php?car1" class="img2"><img src="/images/products/product01_resized.png" alt="product01" class="browseProductImage featuredProductImage" border="0" /></a>
+                                                    <a href="index.php?car1" class="img2"><img src="{{ asset('/images/products/product01_resized.png') }}" alt="product01" class="browseProductImage featuredProductImage" border="0" /></a>
                                                 </div>
                                                 <div class="fleft">
                                                     <div class="Title">
@@ -127,7 +127,7 @@
                                                         <form method="post" class="product js-recalculate" action="index.php" id="addtocartproduct1">
                                                             <input name="quantity" type="hidden" value="1" />
                                                             <div class="addtocart-bar2">
-                                                                <script src="/mylib7.js" type="text/javascript"></script>
+                                                                <script src="{{ asset('/mylib7.js') }}" type="text/javascript"></script>
                                                                 <div class="not_notyfi">
                                                                     <span class="attributes"><b>*</b> Product has attributes</span>
                                                                     <span class="addtocart-button">
@@ -153,7 +153,7 @@
                                             <div class="product-box spacer">
                                                 <div class="browseImage">
                                                     <div class="new"></div>
-                                                    <a href="index.php?car1" class="img2"><img src="/images/products/product20_resized.png" alt="product20" class="browseProductImage featuredProductImage" border="0" /></a>
+                                                    <a href="index.php?car1" class="img2"><img src="{{ asset('/images/products/product20_resized.png') }}" alt="product20" class="browseProductImage featuredProductImage" border="0" /></a>
                                                 </div>
                                                 <div class="fleft">
                                                     <div class="Title">
@@ -199,7 +199,7 @@
                                             <div class="product-box spacer">
                                                 <div class="browseImage">
                                                     <div class="new"></div>
-                                                    <a href="index.php?car1" class="img2"><img src="/images/products/product23_resized.png" alt="product23" class="browseProductImage featuredProductImage" border="0" /></a>
+                                                    <a href="index.php?car1" class="img2"><img src="{{ asset('/images/products/product23_resized.png') }}" alt="product23" class="browseProductImage featuredProductImage" border="0" /></a>
                                                 </div>
                                                 <div class="fleft">
                                                     <div class="Title">
@@ -245,7 +245,7 @@
                                             <div class="product-box spacer">
                                                 <div class="browseImage">
                                                     <div class="new"></div>
-                                                    <a href="index.php?car1" class="img2"><img src="/images/products/product14_resized.png" alt="product14" class="browseProductImage featuredProductImage" border="0" /></a>
+                                                    <a href="index.php?car1" class="img2"><img src="{{ asset('/images/products/product14_resized.png') }}" alt="product14" class="browseProductImage featuredProductImage" border="0" /></a>
                                                 </div>
                                                 <div class="fleft">
                                                     <div class="Title">
