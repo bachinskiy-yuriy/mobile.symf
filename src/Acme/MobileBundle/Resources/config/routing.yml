@@ -1,0 +1,31 @@
+hello:
+    pattern: /
+    defaults: { _controller: AcmeMobileBundle:Main:index}
+
+about:
+    pattern: /about
+    defaults: { _controller: AcmeMobileBundle:Main:about}
+
+delivery:
+    pattern: /delivery
+    defaults: { _controller: AcmeMobileBundle:Main:delivery}
+
+faq:
+    pattern: /faq
+    defaults: { _controller: AcmeMobileBundle:Main:faq}
+    
+contact:
+    pattern: /contact
+    defaults: { _controller: AcmeMobileBundle:Main:contact}
+
+category:
+    pattern: /category/{catId}
+    defaults: { _controller: AcmeMobileBundle:Main:category}
+    requirements: 
+        catId: \d+
+
+category:
+    pattern: /car/{carId}
+    defaults: { _controller: AcmeMobileBundle:Main:car}
+    requirements:
+        carId: \d+
