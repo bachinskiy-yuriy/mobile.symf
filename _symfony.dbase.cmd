@@ -25,7 +25,7 @@ php app/console doctrine:generate:entities AppBundle
 php app/console doctrine:schema:update --force
 
 // конвертує створенні маппінги в xml|yml в анотації
-php bin/console doctrine:mapping:convert annotation ./src
+php app/console doctrine:mapping:convert annotation ./src
 
 // doctrine використовує тільки один тип маппінгу. Обовязково видаляти інший тип за наявності.
 // тобто якщо використовуємо анотації, обовязково видалити xml|yml

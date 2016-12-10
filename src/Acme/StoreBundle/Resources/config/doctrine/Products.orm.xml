@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Acme\StoreBundle\Entity\Products" table="products">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="model" type="string" column="model" length="100" nullable="false"/>
+    <field name="price" type="string" column="price" length="20" nullable="false"/>
+    <field name="mainphoto" type="string" column="mainphoto" length="150" nullable="false"/>
+    <field name="photos" type="string" column="photos" length="1000" nullable="false"/>
+    <field name="category" type="string" column="category" length="50" nullable="false"/>
+    <field name="conditions" type="string" column="conditions" length="20" nullable="false"/>
+    <field name="firstregistration" type="string" column="firstregistration" length="10" nullable="false"/>
+    <field name="gearbox" type="string" column="gearbox" length="30" nullable="false"/>
+    <field name="fuel" type="string" column="fuel" length="30" nullable="false"/>
+    <field name="mileage" type="string" column="mileage" length="20" nullable="false"/>
+    <field name="power" type="string" column="power" length="20" nullable="false"/>
+  </entity>
+</doctrine-mapping>
