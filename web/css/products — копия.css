@@ -107,7 +107,7 @@ margin-bottom:2px; }
 .vmgroup_new  ul li  .product-box      { border:1px solid #e4e3e3; width:219px; text-align:left; float:left; min-height:0px; margin-left:20px; padding:10px; background:#fff; position:relative; border-radius:6px;}
 .vmgroup_new  ul li  .product-box:first-child { margin-left:0;}
 .vmgroup_new   ul li .browseImage { text-align:center;height:auto; width:100%; padding-top:0px; padding-bottom:0px; }
-.vmgroup_new   ul li .browseImage img { text-align:center; width:219px; height:164px;}
+.vmgroup_new   ul li .browseImage img { text-align:center; width:219px; height:219px;}
 
 .vmgroup_new   ul li .cat {margin:0 0 0 0; text-align:left; padding:0; }
 

@@ -1,7 +1,0 @@
-add:
-    pattern: /add
-    defaults: { _controller: AcmeStoreBundle:Main:add}
-
-get:
-    pattern: /get/{id}
-    defaults: { _controller: AcmeStoreBundle:Main:get}

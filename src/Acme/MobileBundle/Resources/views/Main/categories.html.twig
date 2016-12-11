@@ -4,14 +4,7 @@
                                     <div class="wrapper2">
                                         <script src="{{ asset('/js/mylib5.js') }}" type="text/javascript"></script>
                                         <ul class="VMmenu level0 list" id="accordion" >
-                                            <li id="vm-category-1" class="level0 VmClose"><a href="/category/1" ><img src="{{ asset('/images/categories/cat01_resized.png') }}" /> Седан <b></b></a></li>
-                                            <li id="vm-category-2" class="level0 VmClose"><a href="/category/2" ><img src="{{ asset('/images/categories/cat02_resized.png') }}" /> Купе <b></b></a></li>
-                                            <li id="vm-category-3" class="level0 VmClose"><a href="/category/3" ><img src="{{ asset('/images/categories/cat03_resized.png') }}" /> Кабріолет <b></b></a></li>
-                                            <li id="vm-category-4" class="level0 VmClose"><a href="/category/4" ><img src="{{ asset('/images/categories/cat04_resized.png') }}" /> Мінівен <b></b></a></li>
-                                            <li id="vm-category-5" class="level0 VmClose"><a href="/category/5" ><img src="{{ asset('/images/categories/cat05_resized.png') }}" /> Грузові <b></b></a></li>
-                                            <li id="vm-category-6" class="level0 VmClose"><a href="/category/6" ><img src="{{ asset('/images/categories/cat06_resized.png') }}" /> Універсал <b></b></a></li>
-                                            <li id="vm-category-7" class="level0 VmClose"><a href="/category/7" ><img src="{{ asset('/images/categories/cat07_resized.png') }}" /> Вживані <b></b></a></li>
-                                            <li id="vm-category-8" class="level0 VmClose"><a href="/category/8" ><img src="{{ asset('/images/categories/cat08_resized.png') }}" /> Мотоцикли <b></b></a></li>
+                                            {{ render(controller('AcmeMobileBundle:Main:getAllCategoriesOrderedById')) }}
                                         </ul>
                                     </div>
                                 </div>

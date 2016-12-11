@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\StoreBundle\Entity;
+namespace Acme\MobileBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

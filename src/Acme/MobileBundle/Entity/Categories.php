@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\StoreBundle\Entity;
+namespace Acme\MobileBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -13,11 +13,18 @@ use Doctrine\ORM\Mapping as ORM;
 class Categories
 {
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="category", type="integer", nullable=false)
+     * @ORM\Column(name="category", type="string", length=50, nullable=false)
      */
     private $category;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="icon", type="string", length=50, nullable=false)
+     */
+    private $icon;
 
     /**
      * @var integer
@@ -33,7 +40,7 @@ class Categories
     /**
      * Set category
      *
-     * @param integer $category
+     * @param string $category
      * @return Categories
      */
     public function setCategory($category)
@@ -46,11 +53,34 @@ class Categories
     /**
      * Get category
      *
-     * @return integer 
+     * @return string 
      */
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Set icon
+     *
+     * @param string $icon
+     * @return Categories
+     */
+    public function setIcon($icon)
+    {
+        $this->icon = $icon;
+
+        return $this;
+    }
+
+    /**
+     * Get icon
+     *
+     * @return string 
+     */
+    public function getIcon()
+    {
+        return $this->icon;
     }
 
     /**

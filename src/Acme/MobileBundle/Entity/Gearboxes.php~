@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\StoreBundle\Entity;
+namespace Acme\MobileBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -29,37 +29,4 @@ class Gearboxes
     private $id;
 
 
-
-    /**
-     * Set gearbox
-     *
-     * @param string $gearbox
-     * @return Gearboxes
-     */
-    public function setGearbox($gearbox)
-    {
-        $this->gearbox = $gearbox;
-
-        return $this;
-    }
-
-    /**
-     * Get gearbox
-     *
-     * @return string 
-     */
-    public function getGearbox()
-    {
-        return $this->gearbox;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 }

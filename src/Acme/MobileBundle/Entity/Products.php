@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\StoreBundle\Entity;
+namespace Acme\MobileBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -88,6 +88,13 @@ class Products
      * @ORM\Column(name="power", type="string", length=20, nullable=false)
      */
     private $power;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="featured", type="boolean", nullable=false)
+     */
+    private $featured;
 
     /**
      * @var integer
@@ -351,6 +358,29 @@ class Products
     public function getPower()
     {
         return $this->power;
+    }
+
+    /**
+     * Set featured
+     *
+     * @param boolean $featured
+     * @return Products
+     */
+    public function setFeatured($featured)
+    {
+        $this->featured = $featured;
+
+        return $this;
+    }
+
+    /**
+     * Get featured
+     *
+     * @return boolean 
+     */
+    public function getFeatured()
+    {
+        return $this->featured;
     }
 
     /**

@@ -4,6 +4,7 @@ namespace Acme\MobileBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Acme\StoreBundle\Controller\MainController as mc;
 
 class MainController extends Controller
 {
@@ -40,5 +41,26 @@ class MainController extends Controller
     public function carAction($carId)
     {
         return $this->render('AcmeMobileBundle:Main:car.html.twig', array('carId' => $carId));
+    }
+
+    public function getAllCategoriesOrderedByIdAction()
+    {
+        $categories = $this->getDoctrine()->getRepository('AcmeMobileBundle:Categories')->findAll();
+        if (!$categories) { 
+            throw $this->createNotFoundException('No categories found'); 
+        }
+        return $this->render('AcmeMobileBundle:Main:category.html.twig', array('categories' => $categories));
+    }
+
+    public function getFeaturedCarAction()
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $query = $em->createQuery('SELECT p FROM AcmeMobileBundle:Products p WHERE p.featured = :true')->setParameter('true', '1')->setMaxResults(6);
+        $featured = $query->getResult();
+        // $featured = $this->getDoctrine()->getRepository('AcmeMobileBundle:Products')->findAll();
+        if (!$featured) { 
+            throw $this->createNotFoundException('No featured cars found'); 
+        }
+        return $this->render('AcmeMobileBundle:Main:featured_car.html.twig', array('featured' => $featured));
     }
 }

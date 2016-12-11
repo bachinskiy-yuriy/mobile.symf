@@ -29,3 +29,7 @@ category:
     defaults: { _controller: AcmeMobileBundle:Main:car}
     requirements:
         carId: \d+
+
+featured:
+    pattern: /featured
+    defaults: { _controller: AcmeMobileBundle:Main:getFeaturedCar}
