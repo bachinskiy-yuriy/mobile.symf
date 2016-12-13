@@ -5,11 +5,11 @@
                                             <div class="product-box spacer">
                                                 <div class="browseImage">
                                                     <div class="new"></div>
-                                                    <a href="index.php?car1" class="img2"><img src="{{ featured[car].mainphoto }}" alt="product18" class="browseProductImage featuredProductImage" border="0" /></a>
+                                                    <a href="/car/{{ featured[car].id }}" class="img2"><img src="{{ featured[car].mainphoto }}" alt="product18" class="browseProductImage featuredProductImage" border="0" /></a>
                                                 </div>
                                                 <div class="fleft">
                                                     <div class="Title">
-                                                        <span class="count">{{ car }}.</span><a href="index.php?car1" title="{{ featured[car].model }}">{{ featured[car].model }}</a>
+                                                        <span class="count">{{ car }}.</span><a href="/car/{{ featured[car].id }}" title="{{ featured[car].model }}">{{ featured[car].model }}</a>
                                                     </div>
                                                     <div class="description">
                                                         <p>Тип: {{ featured[car].category }}
@@ -21,10 +21,10 @@
                                                         <span class="sales">{{ featured[car].price }}</span><span class="WithoutTax">$133.10</span>
                                                     </div>
                                                     <div class="addtocart-area">
-                                                        <form method="post" class="product js-recalculate" action="index.php" id="addtocartproduct18">
+                                                        <form method="post" class="product js-recalculate" action="#" id="addtocartproduct18">
                                                             <input name="quantity" type="hidden" value="1" />
                                                             <div class="addtocart-bar2">
-                                                                <script src="{{ asset('/mylib7.js') }}" type="text/javascript"></script>
+                                                                <script src="{{ asset('/js/mylib7.js') }}" type="text/javascript"></script>
                                                                 <div class="not_notyfi">
                                                                     <span class="quantity-box">
                                                                         <input type="text" class="quantity-input js-recalculate" name="quantity[]"  value="1"/>

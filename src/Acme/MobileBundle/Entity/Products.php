@@ -97,6 +97,20 @@ class Products
     private $featured;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="photofullsize", type="string", length=1000, nullable=false)
+     */
+    private $photofullsize;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photoresize", type="string", length=1000, nullable=false)
+     */
+    private $photoresize;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -381,6 +395,52 @@ class Products
     public function getFeatured()
     {
         return $this->featured;
+    }
+
+    /**
+     * Set photofullsize
+     *
+     * @param string $photofullsize
+     * @return Products
+     */
+    public function setPhotofullsize($photofullsize)
+    {
+        $this->photofullsize = $photofullsize;
+
+        return $this;
+    }
+
+    /**
+     * Get photofullsize
+     *
+     * @return string 
+     */
+    public function getPhotofullsize()
+    {
+        return $this->photofullsize;
+    }
+
+    /**
+     * Set photoresize
+     *
+     * @param string $photoresize
+     * @return Products
+     */
+    public function setPhotoresize($photoresize)
+    {
+        $this->photoresize = $photoresize;
+
+        return $this;
+    }
+
+    /**
+     * Get photoresize
+     *
+     * @return string 
+     */
+    public function getPhotoresize()
+    {
+        return $this->photoresize;
     }
 
     /**

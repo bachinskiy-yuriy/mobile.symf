@@ -24,7 +24,7 @@ category:
     requirements: 
         catId: \d+
 
-category:
+car:
     pattern: /car/{carId}
     defaults: { _controller: AcmeMobileBundle:Main:car}
     requirements:

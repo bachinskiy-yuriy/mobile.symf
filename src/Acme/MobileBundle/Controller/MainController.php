@@ -40,7 +40,12 @@ class MainController extends Controller
 
     public function carAction($carId)
     {
-        return $this->render('AcmeMobileBundle:Main:car.html.twig', array('carId' => $carId));
+        $car = $this->getDoctrine()->getRepository('AcmeMobileBundle:Products')->findOneById($carId);
+        if (!$car) { 
+            throw $this->createNotFoundException('No car found'); 
+        }
+        return $this->render('AcmeMobileBundle:Main:car.html.twig', array('car' => $car));
+        // return $this->render('AcmeMobileBundle:Main:car.html.twig', array('carId' => $carId));
     }
 
     public function getAllCategoriesOrderedByIdAction()

@@ -97,6 +97,20 @@ class Products
     private $featured;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="photofullsize", type="string", length=1000, nullable=false)
+     */
+    private $photofullsize;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photoresize", type="string", length=1000, nullable=false)
+     */
+    private $photoresize;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")

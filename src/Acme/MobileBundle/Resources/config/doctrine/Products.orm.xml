@@ -16,5 +16,7 @@
     <field name="mileage" type="string" column="mileage" length="20" nullable="false"/>
     <field name="power" type="string" column="power" length="20" nullable="false"/>
     <field name="featured" type="boolean" column="featured" nullable="false"/>
+    <field name="photofullsize" type="string" column="photofullsize" length="1000" nullable="false"/>
+    <field name="photoresize" type="string" column="photoresize" length="1000" nullable="false"/>
   </entity>
 </doctrine-mapping>

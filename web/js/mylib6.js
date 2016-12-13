@@ -17,7 +17,7 @@
                 mobileAutoAdvance: 1,
                 portrait: 0,
                 barDirection: 'leftToRight',
-                imagePath: 'http://livedemo00.template-help.com/free_2013_virtuemart_2_0_22_a/modules/mod_slideshowck/images/',
+                imagePath: '/images/',
                 lightbox: 'mediaboxck',
                 fullpage: 0,
                 navigationHover: false,
