@@ -1,1 +1,0 @@
-start d:\wamp\wampmanager.exe

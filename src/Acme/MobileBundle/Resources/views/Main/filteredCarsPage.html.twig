@@ -6,7 +6,7 @@
             <a href="/free_2013_virtuemart_2_0_22_a/" class="pathway">Home</a> &gt; <a href="/free_2013_virtuemart_2_0_22_a/index.php/online-store" class="pathway">Online Store</a> &gt; Category Layout
         </div>
     </div>
-<!-- ------------------------- --> 
+<!-- ============================= --> 
     <div class="error err-space">
         <div id="system-message-container"></div>
     </div>
@@ -22,7 +22,10 @@
                 <div class="clear"></div>
                 <div class="Results">
                     <div class="floatleft display-number">
-                        <span>Results 1 - 6 of 80</span>
+                        {% set firstCar = thisPage*6-5 %}
+                        {% set lastCar = thisPage*6 %}
+                        {% if lastCar > records %} {% set lastCar = records %} {% endif %}
+                        <span>Показано {{ firstCar }} - {{ lastCar }} из {{ records }}</span>
                         <select name="" class="inputbox" size="1" onchange="window.top.location.href=this.options[this.selectedIndex].value">
                             <option value="/free_2013_virtuemart_2_0_22_a/index.php/online-store/categoty-layout/results,1-6" selected="selected">6</option>
                             <option value="/free_2013_virtuemart_2_0_22_a/index.php/online-store/categoty-layout/results,1-12">12</option>
@@ -37,6 +40,7 @@
         <div id="bottom-pagination" class="pag-bot">
             <div class="pagination">
                 <ul>
+                    {% if app.request.queryString == '' %} {% set queryStr = '' %} {% else %} {% set queryStr = '?'~app.request.queryString %} {% endif %}
                     {% if (records/6)|round(0,'ceil') < 10 %}
                         {% set firstPage = 1 %}
                         {% set endPage = (records/6)|round(0,'ceil') %}
@@ -54,12 +58,12 @@
                       {% if thisPage == page %}
                         <li><strong><span>{{ page }}</span></strong></li>
                       {% else %}
-                        <li><strong><a href="/category/{{ catId }}/{{ page }}" title="{{ page }}">{{ page }}</a></strong></li>
+                        <li><strong><a href="/{{ app.request.attributes.get("_route") }}{{ catId }}/p{{ page }}{{ queryStr }}" title="{{ page }}">{{ page }}</a></strong></li>
                       {% endif %}  
                     {% endfor %}
-                    {#<li><a href="/category/1/{{ thisPage+1 }}" title="Next">Следующая</a></li>
-                    <li><a href="/category/1/{{ thisPage-1 }}" title="Prev">Предыдущая</a></li>
-                    <li><a href="/category/1/#" title="End">Последняя</a></li>#}
+                    {#<li><a href="/{{ get_controller_name() }}/1/{{ thisPage+1 }}" title="Next">Следующая</a></li>
+                    <li><a href="/{{ get_controller_name() }}/1/{{ thisPage-1 }}" title="Prev">Предыдущая</a></li>
+                    <li><a href="/{{ get_controller_name() }}/1/#" title="End">Последняя</a></li>#}
                 <ul>
             </div>
         </div>
@@ -100,7 +104,7 @@
 							</div>
 							<div class="floatright col-2">
 																			<div class="product-price marginbottom12" id="productPrice46">
-											<div class="PricesalesPrice" style="display : block;" ><span class="PricesalesPrice" >{{ car.price }}</span></div>										</div>
+											<div class="PricesalesPrice" style="display : block;" ><span class="PricesalesPrice" >{{ (car.price * app.session.get('rate'))|number_format(0, '.', ' ') }} {{ app.session.get('symb') }}</span></div>										</div>
 																												<div class="addtocart-area">
 										<div class="addtocart-bar2">
 											<script type="text/javascript" src="/js/mylib8.js"></script> 
@@ -169,13 +173,30 @@
 	
 	<div class="clear"></div>
 	<div id="bottom-pagination"><div class="pagination"><ul>
-        {% for page in firstPage..endPage %}
-            {% if thisPage == page %}
-                <li><strong><span>{{ page }}</span></strong></li>
-            {% else %}
-                <li><strong><a href="/category/{{ catId }}/{{ page }}" title="{{ page }}">{{ page }}</a></strong></li>
-            {% endif %}  
-        {% endfor %}
+                    {% if app.request.queryString == '' %} {% set queryStr = '' %} {% else %} {% set queryStr = '?'~app.request.queryString %} {% endif %}
+                    {% if (records/6)|round(0,'ceil') < 10 %}
+                        {% set firstPage = 1 %}
+                        {% set endPage = (records/6)|round(0,'ceil') %}
+                    {% elseif thisPage>=1 and thisPage<=5 %} 
+                        {% set firstPage = 1 %}
+                        {% set endPage = 10 %}
+                    {% elseif thisPage>=(records/6)|round(0,'ceil')-5 and thisPage<=(records/6)|round(0,'ceil') %} 
+                        {% set firstPage = (records/6)|round(0,'ceil')-9 %}
+                        {% set endPage = (records/6)|round(0,'ceil') %}
+                    {% else %}   
+                        {% set firstPage = thisPage-4 %}
+                        {% set endPage = thisPage+5 %}
+                    {% endif %}                                              
+                    {% for page in firstPage..endPage %}
+                      {% if thisPage == page %}
+                        <li><strong><span>{{ page }}</span></strong></li>
+                      {% else %}
+                        <li><strong><a href="/{{ app.request.attributes.get("_route") }}{{ catId }}/p{{ page }}{{ queryStr }}" title="{{ page }}">{{ page }}</a></strong></li>
+                      {% endif %}  
+                    {% endfor %}
+                    {#<li><a href="/{{ get_controller_name() }}/1/{{ thisPage+1 }}" title="Next">Следующая</a></li>
+                    <li><a href="/{{ get_controller_name() }}/1/{{ thisPage-1 }}" title="Prev">Предыдущая</a></li>
+                    <li><a href="/{{ get_controller_name() }}/1/#" title="End">Последняя</a></li>#}
     <ul></div></div>
 		
 							</div>

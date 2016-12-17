@@ -20,9 +20,10 @@ contact:
 
 category:
     pattern: /category/{catId}/{page}
-    defaults: { _controller: AcmeMobileBundle:Main:category, page:1}
+    defaults: { _controller: AcmeMobileBundle:Main:category, page:p1}
     requirements: 
         catId: \d+
+        page: p\d+
 
 car:
     pattern: /car/{carId}
@@ -33,3 +34,13 @@ car:
 featured:
     pattern: /featured
     defaults: { _controller: AcmeMobileBundle:Main:getFeaturedCar}
+
+search:
+    pattern: /search/{page}
+    defaults: { _controller: AcmeMobileBundle:Main:getFilteredCar, page:p1}
+    requirements:
+        page: p\d+
+
+refresh:
+    pattern: /refresh
+    defaults: { _controller: AcmeMobileBundle:Main:refresh}

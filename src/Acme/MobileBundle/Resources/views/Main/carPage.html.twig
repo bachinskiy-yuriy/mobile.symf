@@ -56,10 +56,10 @@
                                                     <span class="price-crossed" >
                                                         <div style="display : block;" >Строк доставки: <span>20 дней</span></div>
                                                     </span>
-                                                    <div class="PricesalesPrice" style="display : block;" >Цена автомобиля: <span class="PricesalesPrice" >{{ car.price }}</span></div>
-                                                    <div class="PricepriceWithoutTax" style="display : block;" >Предоплата: <span class="PricepriceWithoutTax" >€ 220</span></div>
-                                                    <div class="PricediscountAmount" style="display : block;" >Растаможка: <span class="PricediscountAmount" >€ 1200</span></div>
-                                                    <div class="PricetaxAmount" style="display : block;" >Доставка: <span class="PricetaxAmount" >€ 200</span></div>
+                                                    <div class="PricesalesPrice" style="display : block;" >Цена автомобиля: <span class="PricesalesPrice" >{{ (car.price * app.session.get('rate'))|number_format(0, '.', ' ') }} {{ app.session.get('symb') }}</span></div>
+                                                    <div class="PricepriceWithoutTax" style="display : block;" >Предоплата: <span class="PricepriceWithoutTax" >{{ (car.price * app.session.get('rate') * 0.05)|number_format(0, '.', ' ') }} {{ app.session.get('symb') }}</span></div>
+                                                    <div class="PricediscountAmount" style="display : block;" >Растаможка: <span class="PricediscountAmount" >{{ (car.price * app.session.get('rate') * 0.10)|number_format(0, '.', ' ') }} {{ app.session.get('symb') }}</span></div>
+                                                    <div class="PricetaxAmount" style="display : block;" >Доставка: <span class="PricetaxAmount" >{{ (car.price * app.session.get('rate') * 0.25)|number_format(0, '.', ' ') }} {{ app.session.get('symb') }}</span></div>
                                                 </div>
                                             </div>
                                         </div>

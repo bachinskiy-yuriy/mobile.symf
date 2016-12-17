@@ -19,7 +19,7 @@
                                                     </div>
                                                     <div class="clear"></div>
                                                     <div class="Price">
-                                                        <span class="sales">{{ featured[car].price }}</span><span class="WithoutTax">$133.10</span>
+                                                        <span class="sales">{{ (featured[car].price * app.session.get('rate'))|number_format(0, '.', ' ') }} {{ app.session.get('symb') }}</span><span class="WithoutTax">$133.10</span>
                                                     </div>
                                                     <div class="addtocart-area">
                                                         <form method="post" class="product js-recalculate" action="#" id="addtocartproduct18">
