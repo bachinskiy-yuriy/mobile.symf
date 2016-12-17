@@ -52,7 +52,7 @@ img { border:none; vertical-align:middle;}
 		
 		
 	    dl#accordion dt span {
-			background: url(../images/virtuemart/sub-plus.gif) 10px center no-repeat ;
+			background: url(../images/sub-plus.gif) 10px center no-repeat ;
 			padding:0;
 			color:#3f3f3f!important;
 			font-size: 12px;
@@ -69,7 +69,7 @@ img { border:none; vertical-align:middle;}
 	 
 	            dl#accordion dt.active span ,  dl#accordion dt:hover span{
 					z-index:1;
-					background: url(../images/virtuemart/sub-minus.gif) 10px center no-repeat;
+					background: url(../images/sub-minus.gif) 10px center no-repeat;
 					color:#d60709 !important;
 					
 	            }
@@ -798,9 +798,9 @@ h1.browse-view { padding:0px 0 2px 11;  margin:0 0px 10px 0px; }
 #product_list .floatleft { float:left;}
 
 .padding-stock  .stock-level { font-size:12px;}
-.padding-stock .vm2-normalstock { background:url(../images/virtuemart/vm2-sprite.png) left -84px no-repeat; display:inline-block; width:64px; height:15px; }
-.padding-stock .vm2-lowstock { background:url(../images/virtuemart/vm2-sprite.png) left -1px no-repeat; display:inline-block; width:64px; height:15px; }
-.padding-stock .vm2-nostock { background:url(../images/virtuemart/vm2-sprite.png) left -19px no-repeat; display:inline-block; width:64px; height:15px; }
+.padding-stock .vm2-normalstock { background:url(../images/vm2-sprite.png) left -84px no-repeat; display:inline-block; width:64px; height:15px; }
+.padding-stock .vm2-lowstock { background:url(../images/vm2-sprite.png) left -1px no-repeat; display:inline-block; width:64px; height:15px; }
+.padding-stock .vm2-nostock { background:url(../images/vm2-sprite.png) left -19px no-repeat; display:inline-block; width:64px; height:15px; }
 #product_list.list , #product_list.grid , #product_list3 { padding:0 0 0 0;}
 #content .content-indent #product_list.list    .browseProductImageContainer { border:none; padding:10px; width:110px; height:auto;  background:#f4f4f4;}
 #content .content-indent #product_list.list   .browseProductImageContainer img { width:110px; height:auto; background:#fff;}
@@ -812,7 +812,7 @@ h1.browse-view { padding:0px 0 2px 11;  margin:0 0px 10px 0px; }
 #content .content-indent #product_list3 .browse-view .spacer .col-1 .browseProductImageContainer { border:none; padding:0px;  text-align:center; width:200px; height:auto; margin:0 auto;}
 #content .content-indent #product_list3 .browse-view .spacer .col-1 .browseProductImageContainer img {width:100%; max-width:100%; }
 
-#content .content-indent   #product_list.list .row .product1 { border:1px solid #e5e5e5; margin-top:10px;  position:relative;border-radius:0px; min-height:205px; width:100%!important;}
+#content .content-indent   #product_list.list .row .product1 { border:1px solid #e5e5e5; margin-top:10px;  position:relative;border-radius:0px; min-height:130px; width:100%!important;}
 #content .content-indent #product_list.list .browse-view .spacer { padding:10px; background:none;}
 
 #content .content-indent #product_list.grid .browse-view .row {  }
@@ -854,15 +854,15 @@ span.quantity-box{float:left; width:40px; margin-left:4px;}
 input.quantity-input{border:1px solid #e5e5e5; border-radius:0!important;width:32px; height:17px;padding:0 3px 0 3px; font:normal 12px/17px Arial, Helvetica, sans-serif; color:##e5e5e5;}
 span.quantity-controls{width:44px;  height:19px;float:left; padding:0; margin:0;}
 span.quantity-controls input.quantity-controls{border:none;float:left; width:19px; height:19px; cursor:pointer;}
-span.quantity-controls input.quantity-plus{background:url(../images/virtuemart/quantity-controls.png) left top no-repeat; margin-left:2px; }
+span.quantity-controls input.quantity-plus{background:url(../images/quantity-controls.png) left top no-repeat; margin-left:2px; }
 span.quantity-controls input.quantity-plus:hover { background-position:left bottom;}
-span.quantity-controls input.quantity-minus{background:url(../images/virtuemart/quantity-controls.png) right top no-repeat; margin-left:2px; }
+span.quantity-controls input.quantity-minus{background:url(../images/quantity-controls.png) right top no-repeat; margin-left:2px; }
 span.quantity-controls input.quantity-minus:hover {background-position:right bottom;}
 
 #content .content-indent .browse-view .spacer .col-2 .addtocart-area .addtocart-bar2 , .addtocart-area .addtocart-bar2 { margin:0; padding:0; }
 #content .content-indent .browse-view .spacer .col-2 .addtocart-area .addtocart-bar2 span.addtocart-button , .addtocart-bar2 span.addtocart-button { display:inline-block; margin:10px 0 0 0; padding:0 0 0 0; float:none; width:auto; position:relative;}
 #content .content-indent .browse-view .spacer .col-2 .addtocart-area .addtocart-bar2 span.addtocart-button i , .addtocart-bar2 span.addtocart-button i { position:absolute; right:7px; bottom:12px; width:10px; height:10px; display:none;}
-#content .content-indent .browse-view .spacer .col-2 .addtocart-area .addtocart-bar2 span.addtocart-button .addtocart-button , .addtocart-area .addtocart-bar2 span.addtocart-button .addtocart-button , #content       a.addtocart-button { height:30px; width:160px; display:inline-block; background:#91d658; padding:0; margin:0; border-radius:2px; border:1px solid #a4b503; border-bottom:1px solid #677100; border-right:1px solid #7c8901; font:normal 13px/30px Arial, Helvetica, sans-serif;font-family: 'Open Sans', sans-serif; color:#fff; text-transform:none; letter-spacing:0; text-align:center; text-decoration:none;
+#content .content-indent .browse-view .spacer .col-2 .addtocart-area .addtocart-bar2 span.addtocart-button .addtocart-button , .addtocart-area .addtocart-bar2 span.addtocart-button .addtocart-button , #content       a.addtocart-button { height:35px; width:100px; display:inline-block; background:#91d658; padding:0; margin:0; border-radius:2px; border:1px solid #a4b503; border-bottom:1px solid #677100; border-right:1px solid #7c8901; font:normal 13px/30px Arial, Helvetica, sans-serif;font-family: 'Open Sans', sans-serif; color:#fff; text-transform:none; letter-spacing:0; text-align:center; text-decoration:none;
 background: #df0609; /* Old browsers */
 background: -moz-linear-gradient(top,  #df0609 0%, #970a0c 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#df0609), color-stop(100%,#970a0c)); /* Chrome,Safari4+ */
@@ -917,12 +917,12 @@ background-color: #4f4f4f;
 
 
 #content .content-indent .browse-view .spacer .col-3 {overflow:hidden; width:59%;}
-#content .content-indent .browse-view .spacer .col-3 .title-indent { padding-right:20px; padding-bottom:3px; margin-top:10px; position:relative; border-right:1px solid #e5e5e5; margin-right:20px; overflow:hidden;}
-#content .content-indent .browse-view .spacer .col-3  p { color:#aeadad; font:normal 12px/17px Arial, Helvetica, sans-serif; padding:13px 0 20px 0; margin-bottom:0;}
+#content .content-indent .browse-view .spacer .col-3 .title-indent { padding-right:20px; padding-bottom:3px; margin-top:0px; position:relative; border-right:1px solid #e5e5e5; margin-right:20px; overflow:hidden;}
+#content .content-indent .browse-view .spacer .col-3  p { color:#aeadad; font:normal 12px/17px Arial, Helvetica, sans-serif; padding:13px 0 10px 0; margin-bottom:0;}
 #content .content-indent .browse-view .spacer .col-3 .stock-level { float:left; padding-left:10px; padding-top:2px;}
 #content .content-indent .browse-view .spacer .col-3 .vmicon { float:left;}
-#content .content-indent .browse-view .spacer .col-3 .detal { position:absolute; right:20px; bottom:0px; background:url(../images/virtuemart/detal-bg.png) left 2px no-repeat; height:20px;}
-#content .content-indent .browse-view .spacer .col-3 .detal a { color:#6c6c6c; text-decoration:underline; width:auto; height:auto; font:normal 12px/17px Arial, Helvetica, sans-serif; background:url(../images/virtuemart/detal-a.png) right center no-repeat; padding:0 7px 0 22px; margin:0; border:none; border-radius:0; text-transform:capitalize; }
+#content .content-indent .browse-view .spacer .col-3 .detal { position:absolute; right:20px; bottom:0px; background:url(../images/detal-bg.png) left 2px no-repeat; height:20px;}
+#content .content-indent .browse-view .spacer .col-3 .detal a { color:#6c6c6c; text-decoration:underline; width:auto; height:auto; font:normal 12px/17px Arial, Helvetica, sans-serif; background:url(../images/detal-a.png) right center no-repeat; padding:0 7px 0 22px; margin:0; border:none; border-radius:0; text-transform:capitalize; }
 #content .content-indent .browse-view .spacer .col-3 .detal a:hover { text-decoration:none;}
 
 
@@ -959,9 +959,9 @@ span.quantity-box{float:left; width:40px; margin-left:4px;}
 input.quantity-input{border:1px solid #e5e5e5; border-radius:0!important;width:32px; height:17px;padding:0 3px 0 3px; font:normal 12px/17px Arial, Helvetica, sans-serif; color:##e5e5e5;}
 span.quantity-controls{width:44px;  height:19px;float:left; padding:0; margin:0;}
 span.quantity-controls input.quantity-controls{border:none;float:left; width:19px; height:19px; cursor:pointer;}
-span.quantity-controls input.quantity-plus{background:url(../images/virtuemart/quantity-controls.png) left top no-repeat; margin-left:2px; }
+span.quantity-controls input.quantity-plus{background:url(../images/quantity-controls.png) left top no-repeat; margin-left:2px; }
 span.quantity-controls input.quantity-plus:hover { background-position:left bottom;}
-span.quantity-controls input.quantity-minus{background:url(../images/virtuemart/quantity-controls.png) right top no-repeat; margin-left:2px; }
+span.quantity-controls input.quantity-minus{background:url(../images/quantity-controls.png) right top no-repeat; margin-left:2px; }
 span.quantity-controls input.quantity-minus:hover {background-position:right bottom;}
 
 #content .content-indent #product_list.grid .browse-view .spacer .col-2 .addtocart-area .addtocart-bar2 { margin:0; padding:0; }
@@ -972,8 +972,8 @@ span.quantity-controls input.quantity-minus:hover {background-position:right bot
 #content .content-indent #product_list.grid .browse-view .spacer .col-2  p { color:#aeadad; font:normal 12px/17px Arial, Helvetica, sans-serif; padding:13px 0 0 0; margin-bottom:0;}
 #content .content-indent #product_list.grid .browse-view .spacer .col-2 .stock-level { float:left; padding-left:10px;}
 #content .content-indent #product_list.grid .browse-view .spacer .col-2 .vmicon { float:left;}
-#content .content-indent #product_list.grid .browse-view .spacer .col-2 .detal { position:relative; background:url(../images/virtuemart/detal-bg.png) left 2px no-repeat; height:20px;}
-#content .content-indent #product_list.grid .browse-view .spacer .col-2 .detal a { color:#6c6c6c; text-decoration:underline; width:auto; height:auto; font:normal 12px/17px Arial, Helvetica, sans-serif; background:url(../images/virtuemart/detal-a.png) right center no-repeat; padding:0 7px 0 22px; margin:0; border:none; border-radius:0; text-transform:capitalize; }
+#content .content-indent #product_list.grid .browse-view .spacer .col-2 .detal { position:relative; background:url(../images/detal-bg.png) left 2px no-repeat; height:20px;}
+#content .content-indent #product_list.grid .browse-view .spacer .col-2 .detal a { color:#6c6c6c; text-decoration:underline; width:auto; height:auto; font:normal 12px/17px Arial, Helvetica, sans-serif; background:url(../images/detal-a.png) right center no-repeat; padding:0 7px 0 22px; margin:0; border:none; border-radius:0; text-transform:capitalize; }
 #content .content-indent #product_list.grid .browse-view .spacer .col-2 .detal a:hover { text-decoration:none;}
 
 

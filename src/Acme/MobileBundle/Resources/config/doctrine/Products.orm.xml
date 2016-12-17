@@ -1,22 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="Acme\MobileBundle\Entity\Products" table="products">
+    <indexes>
+      <index name="categoryId" columns="categoryId"/>
+      <index name="categoryId_2" columns="categoryId"/>
+      <index name="categoryId_3" columns="categoryId"/>
+      <index name="categoryId_4" columns="categoryId"/>
+      <index name="categoryId_5" columns="categoryId"/>
+      <index name="conditions" columns="conditionId"/>
+      <index name="gearboxId" columns="gearboxId"/>
+      <index name="fuelId" columns="fuelId"/>
+    </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
     <field name="model" type="string" column="model" length="100" nullable="false"/>
-    <field name="price" type="string" column="price" length="20" nullable="false"/>
-    <field name="mainphoto" type="string" column="mainphoto" length="150" nullable="false"/>
-    <field name="photos" type="string" column="photos" length="1000" nullable="false"/>
-    <field name="category" type="string" column="category" length="50" nullable="false"/>
-    <field name="conditions" type="string" column="conditions" length="20" nullable="false"/>
+    <field name="price" type="integer" column="price" nullable="false"/>
     <field name="firstregistration" type="string" column="firstregistration" length="10" nullable="false"/>
-    <field name="gearbox" type="string" column="gearbox" length="30" nullable="false"/>
-    <field name="fuel" type="string" column="fuel" length="30" nullable="false"/>
     <field name="mileage" type="string" column="mileage" length="20" nullable="false"/>
     <field name="power" type="string" column="power" length="20" nullable="false"/>
+    <field name="tecdata" type="string" column="tecdata" length="5000" nullable="true"/>
+    <field name="description" type="string" column="description" length="5000" nullable="true"/>
+    <field name="photo" type="string" column="photo" length="5000" nullable="false"/>
     <field name="featured" type="boolean" column="featured" nullable="false"/>
-    <field name="photofullsize" type="string" column="photofullsize" length="1000" nullable="false"/>
-    <field name="photoresize" type="string" column="photoresize" length="1000" nullable="false"/>
+    <many-to-one field="gearboxid" target-entity="Gearboxes">
+      <join-columns>
+        <join-column name="gearboxId" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="conditionid" target-entity="Conditions">
+      <join-columns>
+        <join-column name="conditionId" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="categoryid" target-entity="Categories">
+      <join-columns>
+        <join-column name="categoryId" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fuelid" target-entity="Fuels">
+      <join-columns>
+        <join-column name="fuelId" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
   </entity>
 </doctrine-mapping>

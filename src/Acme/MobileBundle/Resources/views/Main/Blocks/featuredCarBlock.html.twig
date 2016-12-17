@@ -5,15 +5,16 @@
                                             <div class="product-box spacer">
                                                 <div class="browseImage">
                                                     <div class="new"></div>
-                                                    <a href="/car/{{ featured[car].id }}" class="img2"><img src="{{ featured[car].mainphoto }}" alt="product18" class="browseProductImage featuredProductImage" border="0" /></a>
+                                                    {% set photos = featured[car].photo|split(';') %}
+                                                    <a href="/car/{{ featured[car].id }}" class="img2"><img src="{{ photos[0] }}" alt="product18" class="browseProductImage featuredProductImage" border="0" /></a>
                                                 </div>
                                                 <div class="fleft">
                                                     <div class="Title">
                                                         <span class="count">{{ car }}.</span><a href="/car/{{ featured[car].id }}" title="{{ featured[car].model }}">{{ featured[car].model }}</a>
                                                     </div>
                                                     <div class="description">
-                                                        <p>Тип: {{ featured[car].category }}
-                                                        <p>Состояние: {{ featured[car].conditions }}
+                                                        <p>Тип: {{ featured[car].categoryid.category }}
+                                                        <p>Состояние: {{ featured[car].conditionid.condition }}
                                                         <p>Первая регистрация: {{ featured[car].firstregistration }}
                                                     </div>
                                                     <div class="clear"></div>

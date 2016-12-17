@@ -10,32 +10,42 @@ class MainController extends Controller
 {
     public function indexAction($name)
     {
-        return $this->render('AcmeMobileBundle:Main:main.html.twig', array('name' => $name));
+        return $this->render('AcmeMobileBundle:Main:mainPage.html.twig', array('name' => $name));
     }
     
     public function aboutAction()
     {
-        return $this->render('AcmeMobileBundle:Main:about.html.twig');
+        return $this->render('AcmeMobileBundle:Main:aboutPage.html.twig');
     }
 
     public function DeliveryAction()
     {
-        return $this->render('AcmeMobileBundle:Main:delivery.html.twig');
+        return $this->render('AcmeMobileBundle:Main:deliveryPage.html.twig');
     }
 
     public function faqAction()
     {
-        return $this->render('AcmeMobileBundle:Main:faq.html.twig');
+        return $this->render('AcmeMobileBundle:Main:faqPage.html.twig');
     }
 
     public function contactAction()
     {
-        return $this->render('AcmeMobileBundle:Main:contact.html.twig');
+        return $this->render('AcmeMobileBundle:Main:contactPage.html.twig');
     }
     
-    public function categoryAction($catId)
+    public function categoryAction($catId,$page)
     {
-        return $this->render('AcmeMobileBundle:Main:cars.html.twig', array('catId' => $catId));
+        $page = ($page - 1)*6; 
+        $em = $this->getDoctrine()->getEntityManager();
+        // $query = $em->createQuery('SELECT p FROM AcmeMobileBundle:Products p WHERE p.categoryid.id = :catId')->setParameter('catId', $catId)->setMaxResults(6)->setFirstResult($page);
+        $query = $em->createQuery('SELECT p FROM AcmeMobileBundle:Products p WHERE p.categoryid = :catId')->setParameter('catId', $catId)->setMaxResults(6)->setFirstResult($page);
+        $cars = $query->getResult();
+        $query =  $em->createQuery('SELECT count(p) FROM AcmeMobileBundle:Products p WHERE p.categoryid = :catId')->setParameter('catId', $catId);
+        $records = $query->getSingleScalarResult();
+        if (!$cars) { 
+            throw $this->createNotFoundException('No car found'); 
+        }    
+        return $this->render('AcmeMobileBundle:Main:filteredCarsPage.html.twig', array('cars' => $cars, 'catId' => $catId, 'thisPage' => ($page/6+1),'records' => $records));
     }
 
     public function carAction($carId)
@@ -44,8 +54,7 @@ class MainController extends Controller
         if (!$car) { 
             throw $this->createNotFoundException('No car found'); 
         }
-        return $this->render('AcmeMobileBundle:Main:car.html.twig', array('car' => $car));
-        // return $this->render('AcmeMobileBundle:Main:car.html.twig', array('carId' => $carId));
+        return $this->render('AcmeMobileBundle:Main:carPage.html.twig', array('car' => $car));
     }
 
     public function getAllCategoriesOrderedByIdAction()
@@ -54,7 +63,7 @@ class MainController extends Controller
         if (!$categories) { 
             throw $this->createNotFoundException('No categories found'); 
         }
-        return $this->render('AcmeMobileBundle:Main:category.html.twig', array('categories' => $categories));
+        return $this->render('AcmeMobileBundle:Main:Blocks/categoryBlock.html.twig', array('categories' => $categories));
     }
 
     public function getFeaturedCarAction()
@@ -62,10 +71,9 @@ class MainController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $query = $em->createQuery('SELECT p FROM AcmeMobileBundle:Products p WHERE p.featured = :true')->setParameter('true', '1')->setMaxResults(6);
         $featured = $query->getResult();
-        // $featured = $this->getDoctrine()->getRepository('AcmeMobileBundle:Products')->findAll();
         if (!$featured) { 
             throw $this->createNotFoundException('No featured cars found'); 
         }
-        return $this->render('AcmeMobileBundle:Main:featured_car.html.twig', array('featured' => $featured));
+        return $this->render('AcmeMobileBundle:Main:Blocks/featuredCarBlock.html.twig', array('featured' => $featured));
     }
 }

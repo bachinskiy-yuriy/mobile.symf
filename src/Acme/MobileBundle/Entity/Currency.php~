@@ -1,0 +1,46 @@
+<?php
+
+namespace Acme\MobileBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Currency
+ *
+ * @ORM\Table(name="currency")
+ * @ORM\Entity
+ */
+class Currency
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="currency", type="string", length=20, nullable=false)
+     */
+    private $currency;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="rate", type="decimal", precision=10, scale=3, nullable=false)
+     */
+    private $rate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="symb", type="string", length=1, nullable=false)
+     */
+    private $symb;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}

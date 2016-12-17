@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Products
  *
- * @ORM\Table(name="products")
+ * @ORM\Table(name="products", indexes={@ORM\Index(name="categoryId", columns={"categoryId"}), @ORM\Index(name="categoryId_2", columns={"categoryId"}), @ORM\Index(name="categoryId_3", columns={"categoryId"}), @ORM\Index(name="categoryId_4", columns={"categoryId"}), @ORM\Index(name="categoryId_5", columns={"categoryId"}), @ORM\Index(name="conditions", columns={"conditionId"}), @ORM\Index(name="gearboxId", columns={"gearboxId"}), @ORM\Index(name="fuelId", columns={"fuelId"})})
  * @ORM\Entity
  */
 class Products
@@ -20,39 +20,11 @@ class Products
     private $model;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="price", type="string", length=20, nullable=false)
+     * @ORM\Column(name="price", type="integer", nullable=false)
      */
     private $price;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mainphoto", type="string", length=150, nullable=false)
-     */
-    private $mainphoto;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="photos", type="string", length=1000, nullable=false)
-     */
-    private $photos;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="category", type="string", length=50, nullable=false)
-     */
-    private $category;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="conditions", type="string", length=20, nullable=false)
-     */
-    private $conditions;
 
     /**
      * @var string
@@ -60,20 +32,6 @@ class Products
      * @ORM\Column(name="firstregistration", type="string", length=10, nullable=false)
      */
     private $firstregistration;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="gearbox", type="string", length=30, nullable=false)
-     */
-    private $gearbox;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="fuel", type="string", length=30, nullable=false)
-     */
-    private $fuel;
 
     /**
      * @var string
@@ -90,25 +48,32 @@ class Products
     private $power;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="tecdata", type="string", length=5000, nullable=true)
+     */
+    private $tecdata;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=5000, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string", length=5000, nullable=false)
+     */
+    private $photo;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="featured", type="boolean", nullable=false)
      */
     private $featured;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="photofullsize", type="string", length=1000, nullable=false)
-     */
-    private $photofullsize;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="photoresize", type="string", length=1000, nullable=false)
-     */
-    private $photoresize;
 
     /**
      * @var integer
@@ -118,6 +83,46 @@ class Products
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var \Acme\MobileBundle\Entity\Gearboxes
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\MobileBundle\Entity\Gearboxes")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="gearboxId", referencedColumnName="id")
+     * })
+     */
+    private $gearboxid;
+
+    /**
+     * @var \Acme\MobileBundle\Entity\Conditions
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\MobileBundle\Entity\Conditions")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="conditionId", referencedColumnName="id")
+     * })
+     */
+    private $conditionid;
+
+    /**
+     * @var \Acme\MobileBundle\Entity\Categories
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\MobileBundle\Entity\Categories")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="categoryId", referencedColumnName="id")
+     * })
+     */
+    private $categoryid;
+
+    /**
+     * @var \Acme\MobileBundle\Entity\Fuels
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\MobileBundle\Entity\Fuels")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="fuelId", referencedColumnName="id")
+     * })
+     */
+    private $fuelid;
 
 
 
@@ -147,7 +152,7 @@ class Products
     /**
      * Set price
      *
-     * @param string $price
+     * @param integer $price
      * @return Products
      */
     public function setPrice($price)
@@ -160,103 +165,11 @@ class Products
     /**
      * Get price
      *
-     * @return string 
+     * @return integer 
      */
     public function getPrice()
     {
         return $this->price;
-    }
-
-    /**
-     * Set mainphoto
-     *
-     * @param string $mainphoto
-     * @return Products
-     */
-    public function setMainphoto($mainphoto)
-    {
-        $this->mainphoto = $mainphoto;
-
-        return $this;
-    }
-
-    /**
-     * Get mainphoto
-     *
-     * @return string 
-     */
-    public function getMainphoto()
-    {
-        return $this->mainphoto;
-    }
-
-    /**
-     * Set photos
-     *
-     * @param string $photos
-     * @return Products
-     */
-    public function setPhotos($photos)
-    {
-        $this->photos = $photos;
-
-        return $this;
-    }
-
-    /**
-     * Get photos
-     *
-     * @return string 
-     */
-    public function getPhotos()
-    {
-        return $this->photos;
-    }
-
-    /**
-     * Set category
-     *
-     * @param string $category
-     * @return Products
-     */
-    public function setCategory($category)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return string 
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * Set conditions
-     *
-     * @param string $conditions
-     * @return Products
-     */
-    public function setConditions($conditions)
-    {
-        $this->conditions = $conditions;
-
-        return $this;
-    }
-
-    /**
-     * Get conditions
-     *
-     * @return string 
-     */
-    public function getConditions()
-    {
-        return $this->conditions;
     }
 
     /**
@@ -280,52 +193,6 @@ class Products
     public function getFirstregistration()
     {
         return $this->firstregistration;
-    }
-
-    /**
-     * Set gearbox
-     *
-     * @param string $gearbox
-     * @return Products
-     */
-    public function setGearbox($gearbox)
-    {
-        $this->gearbox = $gearbox;
-
-        return $this;
-    }
-
-    /**
-     * Get gearbox
-     *
-     * @return string 
-     */
-    public function getGearbox()
-    {
-        return $this->gearbox;
-    }
-
-    /**
-     * Set fuel
-     *
-     * @param string $fuel
-     * @return Products
-     */
-    public function setFuel($fuel)
-    {
-        $this->fuel = $fuel;
-
-        return $this;
-    }
-
-    /**
-     * Get fuel
-     *
-     * @return string 
-     */
-    public function getFuel()
-    {
-        return $this->fuel;
     }
 
     /**
@@ -375,6 +242,75 @@ class Products
     }
 
     /**
+     * Set tecdata
+     *
+     * @param string $tecdata
+     * @return Products
+     */
+    public function setTecdata($tecdata)
+    {
+        $this->tecdata = $tecdata;
+
+        return $this;
+    }
+
+    /**
+     * Get tecdata
+     *
+     * @return string 
+     */
+    public function getTecdata()
+    {
+        return $this->tecdata;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Products
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set photo
+     *
+     * @param string $photo
+     * @return Products
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return string 
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
      * Set featured
      *
      * @param boolean $featured
@@ -398,52 +334,6 @@ class Products
     }
 
     /**
-     * Set photofullsize
-     *
-     * @param string $photofullsize
-     * @return Products
-     */
-    public function setPhotofullsize($photofullsize)
-    {
-        $this->photofullsize = $photofullsize;
-
-        return $this;
-    }
-
-    /**
-     * Get photofullsize
-     *
-     * @return string 
-     */
-    public function getPhotofullsize()
-    {
-        return $this->photofullsize;
-    }
-
-    /**
-     * Set photoresize
-     *
-     * @param string $photoresize
-     * @return Products
-     */
-    public function setPhotoresize($photoresize)
-    {
-        $this->photoresize = $photoresize;
-
-        return $this;
-    }
-
-    /**
-     * Get photoresize
-     *
-     * @return string 
-     */
-    public function getPhotoresize()
-    {
-        return $this->photoresize;
-    }
-
-    /**
      * Get id
      *
      * @return integer 
@@ -451,5 +341,97 @@ class Products
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set gearboxid
+     *
+     * @param \Acme\MobileBundle\Entity\Gearboxes $gearboxid
+     * @return Products
+     */
+    public function setGearboxid(\Acme\MobileBundle\Entity\Gearboxes $gearboxid = null)
+    {
+        $this->gearboxid = $gearboxid;
+
+        return $this;
+    }
+
+    /**
+     * Get gearboxid
+     *
+     * @return \Acme\MobileBundle\Entity\Gearboxes 
+     */
+    public function getGearboxid()
+    {
+        return $this->gearboxid;
+    }
+
+    /**
+     * Set conditionid
+     *
+     * @param \Acme\MobileBundle\Entity\Conditions $conditionid
+     * @return Products
+     */
+    public function setConditionid(\Acme\MobileBundle\Entity\Conditions $conditionid = null)
+    {
+        $this->conditionid = $conditionid;
+
+        return $this;
+    }
+
+    /**
+     * Get conditionid
+     *
+     * @return \Acme\MobileBundle\Entity\Conditions 
+     */
+    public function getConditionid()
+    {
+        return $this->conditionid;
+    }
+
+    /**
+     * Set categoryid
+     *
+     * @param \Acme\MobileBundle\Entity\Categories $categoryid
+     * @return Products
+     */
+    public function setCategoryid(\Acme\MobileBundle\Entity\Categories $categoryid = null)
+    {
+        $this->categoryid = $categoryid;
+
+        return $this;
+    }
+
+    /**
+     * Get categoryid
+     *
+     * @return \Acme\MobileBundle\Entity\Categories 
+     */
+    public function getCategoryid()
+    {
+        return $this->categoryid;
+    }
+
+    /**
+     * Set fuelid
+     *
+     * @param \Acme\MobileBundle\Entity\Fuels $fuelid
+     * @return Products
+     */
+    public function setFuelid(\Acme\MobileBundle\Entity\Fuels $fuelid = null)
+    {
+        $this->fuelid = $fuelid;
+
+        return $this;
+    }
+
+    /**
+     * Get fuelid
+     *
+     * @return \Acme\MobileBundle\Entity\Fuels 
+     */
+    public function getFuelid()
+    {
+        return $this->fuelid;
     }
 }

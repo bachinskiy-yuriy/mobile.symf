@@ -1,0 +1,188 @@
+{% extends 'AcmeMobileBundle:Main:baseLayer.html.twig' %}
+    {% block content %}
+<!-- Перевірити на потрібність -->
+    <div class="moduletable_Breadcrumbs">
+        <div class="breadcrumbs_Breadcrumbs">
+            <a href="/free_2013_virtuemart_2_0_22_a/" class="pathway">Home</a> &gt; <a href="/free_2013_virtuemart_2_0_22_a/index.php/online-store" class="pathway">Online Store</a> &gt; Category Layout
+        </div>
+    </div>
+<!-- ------------------------- --> 
+    <div class="error err-space">
+        <div id="system-message-container"></div>
+    </div>
+    <div class="content-indent">
+        <div class="orderby-displaynumber">
+    		<div id="navigation">
+                <a class="active Clist" href="#" title"List view"></a>
+				<a class="Cgrid" href="#" title"Grid view" ></a>
+            </div>
+            <div class="width90">
+                <div class="orderlistcontainer"><div class="title">Sort by</div><div class="activeOrder"><a title=" +/-" href="/free_2013_virtuemart_2_0_22_a/index.php/online-store/categoty-layout/orderDesc">Product Name  +/-</a></div><div class="orderlist"><div><a title="Product SKU" href="/free_2013_virtuemart_2_0_22_a/index.php/online-store/categoty-layout/by,`p`.product_sku">Product SKU</a></div><div><a title="Category" href="/free_2013_virtuemart_2_0_22_a/index.php/online-store/categoty-layout/by,category_name">Category</a></div><div><a title="Manufacturer name" href="/free_2013_virtuemart_2_0_22_a/index.php/online-store/categoty-layout/by,mf_name">Manufacturer name</a></div><div><a title="Product Sales" href="/free_2013_virtuemart_2_0_22_a/index.php/online-store/categoty-layout/by,product_sales">Product Sales</a></div><div><a title="Product id" href="/free_2013_virtuemart_2_0_22_a/index.php/online-store/categoty-layout/by,`p`.virtuemart_product_id">Product id</a></div></div></div>
+                <div class="orderlistcontainer"><div class="title">Manufacturer: </div><div class="activeOrder">Select manufacturer</div><div class="orderlist"><div><a title="Manufacturer-1" href="/free_2013_virtuemart_2_0_22_a/index.php/online-store/categoty-layout/manufacturer/brand-example-1">Manufacturer-1</a></div><div><a title="Manufacturer-2" href="/free_2013_virtuemart_2_0_22_a/index.php/online-store/categoty-layout/manufacturer/brand-example-2">Manufacturer-2</a></div><div><a title="Manufacturer-3" href="/free_2013_virtuemart_2_0_22_a/index.php/online-store/categoty-layout/manufacturer/brand-example-3">Manufacturer-3</a></div><div><a title="Manufacturer-4" href="/free_2013_virtuemart_2_0_22_a/index.php/online-store/categoty-layout/manufacturer/brand-example-4">Manufacturer-4</a></div><div><a title="Manufacturer-5" href="/free_2013_virtuemart_2_0_22_a/index.php/online-store/categoty-layout/manufacturer/brand-example-5">Manufacturer-5</a></div></div></div>
+                <div class="clear"></div>
+                <div class="Results">
+                    <div class="floatleft display-number">
+                        <span>Results 1 - 6 of 80</span>
+                        <select name="" class="inputbox" size="1" onchange="window.top.location.href=this.options[this.selectedIndex].value">
+                            <option value="/free_2013_virtuemart_2_0_22_a/index.php/online-store/categoty-layout/results,1-6" selected="selected">6</option>
+                            <option value="/free_2013_virtuemart_2_0_22_a/index.php/online-store/categoty-layout/results,1-12">12</option>
+                            <option value="/free_2013_virtuemart_2_0_22_a/index.php/online-store/categoty-layout/results,1-18">18</option>
+                            <option value="/free_2013_virtuemart_2_0_22_a/index.php/online-store/categoty-layout/results,1-24">24</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+		</div>
+        <div id="bottom-pagination" class="pag-bot">
+            <div class="pagination">
+                <ul>
+                    {% if (records/6)|round(0,'ceil') < 10 %}
+                        {% set firstPage = 1 %}
+                        {% set endPage = (records/6)|round(0,'ceil') %}
+                    {% elseif thisPage>=1 and thisPage<=5 %} 
+                        {% set firstPage = 1 %}
+                        {% set endPage = 10 %}
+                    {% elseif thisPage>=(records/6)|round(0,'ceil')-5 and thisPage<=(records/6)|round(0,'ceil') %} 
+                        {% set firstPage = (records/6)|round(0,'ceil')-9 %}
+                        {% set endPage = (records/6)|round(0,'ceil') %}
+                    {% else %}   
+                        {% set firstPage = thisPage-4 %}
+                        {% set endPage = thisPage+5 %}
+                    {% endif %}                                              
+                    {% for page in firstPage..endPage %}
+                      {% if thisPage == page %}
+                        <li><strong><span>{{ page }}</span></strong></li>
+                      {% else %}
+                        <li><strong><a href="/category/{{ catId }}/{{ page }}" title="{{ page }}">{{ page }}</a></strong></li>
+                      {% endif %}  
+                    {% endfor %}
+                    {#<li><a href="/category/1/{{ thisPage+1 }}" title="Next">Следующая</a></li>
+                    <li><a href="/category/1/{{ thisPage-1 }}" title="Prev">Предыдущая</a></li>
+                    <li><a href="/category/1/#" title="End">Последняя</a></li>#}
+                <ul>
+            </div>
+        </div>
+		<div id="product_list" class="list">
+            <div  class="browse-view">
+                <div class="row element">
+                    {% for car in cars %}
+                    {% set photo = car.photo|split(';') %}
+                    <div class="product1 floatleft" style="width:33%">
+                        <div class="spacer  ">
+                            <div class="floatleft col-1">
+                                <div class="browseProductImageContainer">
+                                    <a href="/car/{{ car.id }}" class="img-scr"><img src="{{ photo[0] }}" alt="product46" class="browseProductImage" border="0" title="{{ car.model }}"  /></a>										
+                                </div>
+                                <p>
+                                    <div class="rating">
+                                        <span class="vote">
+                                            <span title="" class="vmicon ratingbox" style="display:inline-block;">
+                                                <span class="stars-orange" style="width:0%"></span>
+                                            </span>
+         								</span>
+		    						</div>	
+                            </div>
+							<div class="floatleft col-3">
+                                <div class="title-indent">
+                                    <h2><a href="/car/{{ car.id }}" >{{ car.model }}</a></h2>
+                                    <p> Тип кузова автомобиля: {{ car.categoryid.category }}
+                                    <br> Вид топлива: {{ car.fuelid.fuel }}
+                                    <br> Состояние: {{ car.conditionid.condition }}
+                                    <br> Пробег: {{ car.mileage }}
+                                    <br> Первая регистрация: {{ car.firstregistration }}
+                                    <br> Тип коробки передач: {{ car.gearboxid.gearbox }}
+                                    <br> Мощность двигателя: {{ car.power }}
+                                    <div class="detal">
+                                        <a href="/car/{{ car.id }}" title="Dolor sit amet" class="product-details">Подробнее</a>											
+                                    </div>
+							    </div>
+							</div>
+							<div class="floatright col-2">
+																			<div class="product-price marginbottom12" id="productPrice46">
+											<div class="PricesalesPrice" style="display : block;" ><span class="PricesalesPrice" >{{ car.price }}</span></div>										</div>
+																												<div class="addtocart-area">
+										<div class="addtocart-bar2">
+											<script type="text/javascript" src="/js/mylib8.js"></script> 
+                                            <div class="not_notyfi">
+                                                <div class="clear"></div>
+                                                <span class="addtocart-button">
+											        <i>&gt;</i>
+                                                    <input type="submit" name=""  onclick="location.href='/car/'+{{ car.id }}" class="addtocart-button cart-click" value="Подробнее" title="Подробнее" />
+                                                </span>
+                                                <div class="det">
+												<a href="/car/1" title="Dolor sit amet" class="button">Details<span>&gt;</span></a>											</div>
+																						<div class="clear"></div>
+																						</div>
+																					
+										</div>
+									</div>
+																	</div>
+								<div class="clear"></div>
+								</div>
+							</div>
+         					{% endfor %}																	
+	    					<div class="clear"></div>
+						</div>
+
+</div>
+</div>
+		<script type="text/javascript" src="js/cookie.js"></script>
+<script type="text/javascript">
+ jQuery(document).ready(function($) {
+	var cc = $.cookie('list_grid');
+	if (cc == 'g') {
+		$('#product_list').addClass('grid');
+		$('#product_list').removeClass('list');
+		$('.Clist').removeClass('active');
+		$('.Cgrid').addClass('active');
+	} else  {
+		$('#product_list').removeClass('grid');
+		$('#product_list').addClass('list');
+		$('.Clist').addClass('active');
+		$('.Cgrid').removeClass('active');
+	}
+	
+	$('.Cgrid').click(function() {
+		$('#product_list').fadeOut(300, function() {
+			$(this).addClass('grid').removeClass('list').fadeIn(300);
+		});
+		$('.Clist').removeClass('active');
+		$('.Cgrid').addClass('active');
+		$.cookie('list_grid', 'g' , {path: '/free_2013_virtuemart_2_0_22_a/index.php'});
+		return false;
+	});
+	$('.Clist').click(function() {
+		$('#product_list').fadeOut(300, function() {
+			$(this).removeClass('grid').addClass('list').fadeIn(300);
+		});
+		$('.Clist').addClass('active');
+		$('.Cgrid').removeClass('active');
+		$.cookie('list_grid', 'l' , {path: '/free_2013_virtuemart_2_0_22_a/index.php'});
+		
+		return false;
+	});
+});
+
+</script>
+
+	
+	<div class="clear"></div>
+	<div id="bottom-pagination"><div class="pagination"><ul>
+        {% for page in firstPage..endPage %}
+            {% if thisPage == page %}
+                <li><strong><span>{{ page }}</span></strong></li>
+            {% else %}
+                <li><strong><a href="/category/{{ catId }}/{{ page }}" title="{{ page }}">{{ page }}</a></strong></li>
+            {% endif %}  
+        {% endfor %}
+    <ul></div></div>
+		
+							</div>
+														<div class="module_banner_2">
+						 <div class="boxIndent">
+
+				</div>
+			</div>
+	
+    {% endblock %}

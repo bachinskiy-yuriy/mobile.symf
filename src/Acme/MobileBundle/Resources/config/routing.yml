@@ -19,8 +19,8 @@ contact:
     defaults: { _controller: AcmeMobileBundle:Main:contact}
 
 category:
-    pattern: /category/{catId}
-    defaults: { _controller: AcmeMobileBundle:Main:category}
+    pattern: /category/{catId}/{page}
+    defaults: { _controller: AcmeMobileBundle:Main:category, page:1}
     requirements: 
         catId: \d+
 

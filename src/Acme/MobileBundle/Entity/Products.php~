@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Products
  *
- * @ORM\Table(name="products")
+ * @ORM\Table(name="products", indexes={@ORM\Index(name="categoryId", columns={"categoryId"}), @ORM\Index(name="categoryId_2", columns={"categoryId"}), @ORM\Index(name="categoryId_3", columns={"categoryId"}), @ORM\Index(name="categoryId_4", columns={"categoryId"}), @ORM\Index(name="categoryId_5", columns={"categoryId"}), @ORM\Index(name="conditions", columns={"conditionId"}), @ORM\Index(name="gearboxId", columns={"gearboxId"}), @ORM\Index(name="fuelId", columns={"fuelId"})})
  * @ORM\Entity
  */
 class Products
@@ -20,39 +20,11 @@ class Products
     private $model;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="price", type="string", length=20, nullable=false)
+     * @ORM\Column(name="price", type="integer", nullable=false)
      */
     private $price;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mainphoto", type="string", length=150, nullable=false)
-     */
-    private $mainphoto;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="photos", type="string", length=1000, nullable=false)
-     */
-    private $photos;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="category", type="string", length=50, nullable=false)
-     */
-    private $category;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="conditions", type="string", length=20, nullable=false)
-     */
-    private $conditions;
 
     /**
      * @var string
@@ -60,20 +32,6 @@ class Products
      * @ORM\Column(name="firstregistration", type="string", length=10, nullable=false)
      */
     private $firstregistration;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="gearbox", type="string", length=30, nullable=false)
-     */
-    private $gearbox;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="fuel", type="string", length=30, nullable=false)
-     */
-    private $fuel;
 
     /**
      * @var string
@@ -90,25 +48,32 @@ class Products
     private $power;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="tecdata", type="string", length=5000, nullable=true)
+     */
+    private $tecdata;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=5000, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string", length=5000, nullable=false)
+     */
+    private $photo;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="featured", type="boolean", nullable=false)
      */
     private $featured;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="photofullsize", type="string", length=1000, nullable=false)
-     */
-    private $photofullsize;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="photoresize", type="string", length=1000, nullable=false)
-     */
-    private $photoresize;
 
     /**
      * @var integer
@@ -118,6 +83,46 @@ class Products
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var \Acme\MobileBundle\Entity\Gearboxes
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\MobileBundle\Entity\Gearboxes")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="gearboxId", referencedColumnName="id")
+     * })
+     */
+    private $gearboxid;
+
+    /**
+     * @var \Acme\MobileBundle\Entity\Conditions
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\MobileBundle\Entity\Conditions")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="conditionId", referencedColumnName="id")
+     * })
+     */
+    private $conditionid;
+
+    /**
+     * @var \Acme\MobileBundle\Entity\Categories
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\MobileBundle\Entity\Categories")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="categoryId", referencedColumnName="id")
+     * })
+     */
+    private $categoryid;
+
+    /**
+     * @var \Acme\MobileBundle\Entity\Fuels
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\MobileBundle\Entity\Fuels")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="fuelId", referencedColumnName="id")
+     * })
+     */
+    private $fuelid;
 
 
 }
