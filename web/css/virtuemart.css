@@ -775,7 +775,7 @@ h1.browse-view { padding:0px 0 2px 11;  margin:0 0px 10px 0px; }
 }
 
 .orderlistcontainer:first-child  div.activeOrder { margin-top:0;}
-.orderlistcontainer div.activeOrder.block {background:url(../images/virtuemart/arrow_down.png) right 1px no-repeat #fff; cursor:pointer;}
+.orderlistcontainer div.activeOrder.block {background:url(../images/arrow_down.png) right 1px no-repeat #fff; cursor:pointer;}
 .Order {margin-top:0px; background:#FFF;cursor:pointer;border:solid #e5e5e5 1px;font-size:12px;padding:2px 25px 1px 10px; color:#bebeba; float:left; min-width:100px; height:19px;  border-radius:0; cursor:default; position:relative; z-index:10;}
 
 .orderlistcontainer:first-child div.activeOrder {min-width:100px;}

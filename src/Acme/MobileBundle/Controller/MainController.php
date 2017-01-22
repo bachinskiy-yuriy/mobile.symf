@@ -40,22 +40,37 @@ class MainController extends Controller
 
     public function contactAction()
     {
+        if(isset($_POST['contact_name'])){
+            $message = \Swift_Message::newInstance()
+                ->setSubject($_POST['contact_subject'])
+                ->setFrom(array('mobile.kl.com.ua@gmail.com' => 'Автомобили из Германии'))
+                ->setTo('mobile.kl.com.ua@gmail.com')
+                ->setBody('<b>Имя: </b>'.$_POST['contact_name'].'<br/>'.'<b>Телефон: </b>'.$_POST['contact_tel'].'<br/>'.'<b>E-mail: </b>'.$_POST['contact_email'].'<br/>'.'<b>Автомобиль: </b>'.$_POST['contact_model'].'<br/>'.'<b>Сообщение: </b>'.$_POST['contact_message'], 'text/html');
+            $this->get('mailer')->send($message);
+            unset($message);
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Сообщение отправлено')
+                ->setFrom(array('mobile.kl.com.ua@gmail.com' => 'Автомобили из Германии'))
+                ->setTo($_POST['contact_email'])
+                ->setBody('Ваше сообщение было успешно отправлено.<br/>Мы свяжемся с Вами в ближайшее время.', 'text/html');
+            $this->get('mailer')->send($message);
+            }    
         return $this->render('AcmeMobileBundle:Main:contactPage.html.twig');
     }
     
-    public function categoryAction($catId,$page)
+    public function categoryAction($catId,$page,$results)
     {
-        $page = (substr($page,1,strlen($page)-1) - 1)*6; 
+        $page = (substr($page,1,strlen($page)-1) - 1)*$results; 
         $em = $this->getDoctrine()->getEntityManager();
         // $query = $em->createQuery('SELECT p FROM AcmeMobileBundle:Products p WHERE p.categoryid.id = :catId')->setParameter('catId', $catId)->setMaxResults(6)->setFirstResult($page);
-        $query = $em->createQuery('SELECT p FROM AcmeMobileBundle:Products p WHERE p.categoryid = :catId')->setParameter('catId', $catId)->setMaxResults(6)->setFirstResult($page);
+        $query = $em->createQuery('SELECT p FROM AcmeMobileBundle:Products p WHERE p.categoryid = :catId')->setParameter('catId', $catId)->setMaxResults($results)->setFirstResult($page);
         $cars = $query->getResult();
         $query =  $em->createQuery('SELECT count(p) FROM AcmeMobileBundle:Products p WHERE p.categoryid = :catId')->setParameter('catId', $catId);
         $records = $query->getSingleScalarResult();
         if (!$cars) { 
             throw $this->createNotFoundException('No car found'); 
         }    
-        return $this->render('AcmeMobileBundle:Main:filteredCarsPage.html.twig', array('cars' => $cars, 'catId' => '/'.$catId, 'thisPage' => ($page/6+1),'records' => $records));
+        return $this->render('AcmeMobileBundle:Main:filteredCarsPage.html.twig', array('cars' => $cars, 'catId' => $catId, 'thisPage' => ($page/$results+1),'records' => $records, 'results' => $results));
     }
 
     public function carAction($carId)
@@ -87,19 +102,19 @@ class MainController extends Controller
         return $this->render('AcmeMobileBundle:Main:Blocks/featuredCarBlock.html.twig', array('featured' => $featured));
     }
 
-    public function getFilteredCarAction($page)
+    public function getFilteredCarAction($page,$results)
     {
-        $page = (substr($page,1,strlen($page)-1) - 1)*6; 
+        $page = (substr($page,1,strlen($page)-1) - 1)*$results; 
         $search=$_GET['keyword']; 
         $em = $this->getDoctrine()->getEntityManager();
-        $query = $em->createQuery('SELECT p FROM AcmeMobileBundle:Products p WHERE p.model LIKE :search')->setParameter('search', '%'.$search.'%')->setMaxResults(6)->setFirstResult($page);;
+        $query = $em->createQuery('SELECT p FROM AcmeMobileBundle:Products p WHERE p.model LIKE :search')->setParameter('search', '%'.$search.'%')->setMaxResults($results)->setFirstResult($page);;
         $cars = $query->getResult();
         $query =  $em->createQuery('SELECT count(p) FROM AcmeMobileBundle:Products p WHERE p.model LIKE :search')->setParameter('search', '%'.$search.'%');
         $records = $query->getSingleScalarResult();
-        if (!$cars) { 
-            throw $this->createNotFoundException('No featured cars found'); 
-        }
-        return $this->render('AcmeMobileBundle:Main:filteredCarsPage.html.twig', array('cars' => $cars, 'catId' => '', 'thisPage' => ($page/6+1),'records' => $records));
+        // if (!$cars) { 
+            // throw $this->createNotFoundException('No featured cars found'); 
+        // }
+        return $this->render('AcmeMobileBundle:Main:filteredCarsPage.html.twig', array('cars' => $cars, 'catId' => '', 'thisPage' => $page/$results+1,'records' => $records,'results' => $results));
     }
 
     public function getAllCurrencyOrderedByIdAction()

@@ -19,8 +19,8 @@ contact:
     defaults: { _controller: AcmeMobileBundle:Main:contact}
 
 category:
-    pattern: /category/{catId}/{page}
-    defaults: { _controller: AcmeMobileBundle:Main:category, page:p1}
+    pattern: /category/{catId}/{page}/{results}
+    defaults: { _controller: AcmeMobileBundle:Main:category, page:p1,results:6}
     requirements: 
         catId: \d+
         page: p\d+
@@ -36,8 +36,8 @@ featured:
     defaults: { _controller: AcmeMobileBundle:Main:getFeaturedCar}
 
 search:
-    pattern: /search/{page}
-    defaults: { _controller: AcmeMobileBundle:Main:getFilteredCar, page:p1}
+    pattern: /search/{page}/{results}
+    defaults: { _controller: AcmeMobileBundle:Main:getFilteredCar, page:p1, results:6}
     requirements:
         page: p\d+
 
