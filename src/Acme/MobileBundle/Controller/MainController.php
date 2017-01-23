@@ -62,11 +62,8 @@ class MainController extends Controller
     {
         $page = (substr($page,1,strlen($page)-1) - 1)*$results; 
         $em = $this->getDoctrine()->getEntityManager();
-        // $query = $em->createQuery('SELECT p FROM AcmeMobileBundle:Products p WHERE p.categoryid.id = :catId')->setParameter('catId', $catId)->setMaxResults(6)->setFirstResult($page);
-        $query = $em->createQuery('SELECT p FROM AcmeMobileBundle:Products p WHERE p.categoryid = :catId')->setParameter('catId', $catId)->setMaxResults($results)->setFirstResult($page);
-        $cars = $query->getResult();
-        $query =  $em->createQuery('SELECT count(p) FROM AcmeMobileBundle:Products p WHERE p.categoryid = :catId')->setParameter('catId', $catId);
-        $records = $query->getSingleScalarResult();
+        $cars = $this->getDoctrine()->getRepository('AcmeMobileBundle:Products')->findCarsByCategory($catId,$results,$page);
+        $records = $this->getDoctrine()->getRepository('AcmeMobileBundle:Products')->findCarsCountByCategory($catId);
         if (!$cars) { 
             throw $this->createNotFoundException('No car found'); 
         }    
@@ -93,9 +90,8 @@ class MainController extends Controller
 
     public function getFeaturedCarAction()
     {
-        $em = $this->getDoctrine()->getEntityManager();
-        $query = $em->createQuery('SELECT p FROM AcmeMobileBundle:Products p WHERE p.featured = :true')->setParameter('true', '1')->setMaxResults(6);
-        $featured = $query->getResult();
+        // $featured = $this->getDoctrine()->getRepository('AcmeMobileBundle:Products')->findByFeatured(1);
+        $featured = $this->getDoctrine()->getRepository('AcmeMobileBundle:Products')->findFeaturedCars();
         if (!$featured) { 
             throw $this->createNotFoundException('No featured cars found'); 
         }
@@ -106,11 +102,8 @@ class MainController extends Controller
     {
         $page = (substr($page,1,strlen($page)-1) - 1)*$results; 
         $search=$_GET['keyword']; 
-        $em = $this->getDoctrine()->getEntityManager();
-        $query = $em->createQuery('SELECT p FROM AcmeMobileBundle:Products p WHERE p.model LIKE :search')->setParameter('search', '%'.$search.'%')->setMaxResults($results)->setFirstResult($page);;
-        $cars = $query->getResult();
-        $query =  $em->createQuery('SELECT count(p) FROM AcmeMobileBundle:Products p WHERE p.model LIKE :search')->setParameter('search', '%'.$search.'%');
-        $records = $query->getSingleScalarResult();
+        $cars =  $this->getDoctrine()->getRepository('AcmeMobileBundle:Products')->findFilteredCars($search, $results, $page);
+        $records =  $this->getDoctrine()->getRepository('AcmeMobileBundle:Products')->findCarsCountBySearch($search);
         // if (!$cars) { 
             // throw $this->createNotFoundException('No featured cars found'); 
         // }

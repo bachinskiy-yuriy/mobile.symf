@@ -29,4 +29,37 @@ class Conditions
     private $id;
 
 
+
+    /**
+     * Set condition
+     *
+     * @param string $condition
+     * @return Conditions
+     */
+    public function setCondition($condition)
+    {
+        $this->condition = $condition;
+
+        return $this;
+    }
+
+    /**
+     * Get condition
+     *
+     * @return string 
+     */
+    public function getCondition()
+    {
+        return $this->condition;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

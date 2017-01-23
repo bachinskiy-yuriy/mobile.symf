@@ -43,4 +43,83 @@ class Currency
     private $id;
 
 
+
+    /**
+     * Set currency
+     *
+     * @param string $currency
+     * @return Currency
+     */
+    public function setCurrency($currency)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Get currency
+     *
+     * @return string 
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * Set rate
+     *
+     * @param string $rate
+     * @return Currency
+     */
+    public function setRate($rate)
+    {
+        $this->rate = $rate;
+
+        return $this;
+    }
+
+    /**
+     * Get rate
+     *
+     * @return string 
+     */
+    public function getRate()
+    {
+        return $this->rate;
+    }
+
+    /**
+     * Set symb
+     *
+     * @param string $symb
+     * @return Currency
+     */
+    public function setSymb($symb)
+    {
+        $this->symb = $symb;
+
+        return $this;
+    }
+
+    /**
+     * Get symb
+     *
+     * @return string 
+     */
+    public function getSymb()
+    {
+        return $this->symb;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

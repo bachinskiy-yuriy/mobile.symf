@@ -7,8 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Products
  *
- * @ORM\Table(name="products", indexes={@ORM\Index(name="categoryId", columns={"categoryId"}), @ORM\Index(name="categoryId_2", columns={"categoryId"}), @ORM\Index(name="categoryId_3", columns={"categoryId"}), @ORM\Index(name="categoryId_4", columns={"categoryId"}), @ORM\Index(name="categoryId_5", columns={"categoryId"}), @ORM\Index(name="conditions", columns={"conditionId"}), @ORM\Index(name="gearboxId", columns={"gearboxId"}), @ORM\Index(name="fuelId", columns={"fuelId"})})
  * @ORM\Entity
+ * @ORM\Table(name="products", indexes={@ORM\Index(name="categoryId", columns={"categoryId"}), @ORM\Index(name="categoryId_2", columns={"categoryId"}), @ORM\Index(name="categoryId_3", columns={"categoryId"}), @ORM\Index(name="categoryId_4", columns={"categoryId"}), @ORM\Index(name="categoryId_5", columns={"categoryId"}), @ORM\Index(name="conditions", columns={"conditionId"}), @ORM\Index(name="gearboxId", columns={"gearboxId"}), @ORM\Index(name="fuelId", columns={"fuelId"})})
+ * @ORM\Entity(repositoryClass="Acme\MobileBundle\Entity\ProductsRepository")
  */
 class Products
 {
